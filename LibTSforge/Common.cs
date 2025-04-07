@@ -1,6 +1,7 @@
 namespace LibTSforge
 {
     using System;
+    using System.Diagnostics.CodeAnalysis;
     using System.IO;
     using System.Linq;
     using System.Runtime.InteropServices;
@@ -136,7 +137,7 @@ namespace LibTSforge
     {
         public static byte[] CastToArray<T>(this T data) where T : struct
         {
-            int size = Marshal.SizeOf(typeof(T));
+            int size = Marshal.SizeOf<T>();
             byte[] result = new byte[size];
             GCHandle handle = GCHandle.Alloc(result, GCHandleType.Pinned);
             try
